@@ -7,6 +7,7 @@
     }
 
     body {
+    padding-top: 25px;
     overflow-x: hidden;
     }
 
@@ -33,6 +34,8 @@
 
     input[type="email"],
     input[type="text"],
+    input[type="topic"],
+    input[type="feedback"],
     textarea {
     width: 100%;
     padding: 12px;
@@ -138,54 +141,54 @@
 
 </style>
 
-<svelte:head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
-    $(document).ready(function() {
-      $("form").submit(function(event) {
-        event.preventDefault();
-        var $submitButton = $('input[type="submit"]');
-        var response = grecaptcha.getResponse();
-        if (response.length == 0) {
-          alert("Please verify that you are not a robot.");
-          return false;
-        } else {
-          $submitButton.prop('disabled', true); // disable the submit button
-          $('#loading').show();
-          $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbw0k6AukzSvS69qmiUOWLJfv9xw4qO07YU5grw-ukvMZxCKvSxdH_XwU66cqGZDx2c/exec",
-            method: "POST",
-            dataType: "json",
-            data: $("form").serialize(),
-            success: function() {
-              $submitButton.prop('disabled', false); // re-enable the submit button
-              $('#loading').hide();
-              $("form")[0].reset();
-              $('#myModal .modal-title').html('Success');
-              $('#myModal .modal-body').html('Your feedback has been submitted.');
-              $('#myModal').modal('show');
-            },
-            error: function() {
-              $submitButton.prop('disabled', false); // re-enable the submit button
-              $('#loading').hide();
-              $('#myModal .modal-title').html('Error');
-              $('#myModal .modal-body').html('There was a problem submitting your feedback.');
-              $('#myModal').modal('show');
-            }
-          });
-        }
-      });
-    });
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
 
-    function onSubmit(token) {
-      document.getElementById("feedback-form").submit();
-    }
-  </script>
-</svelte:head>
+  $(document).ready(function() {
+            $("form").submit(function(event) {
+                event.preventDefault();
+                var $submitButton = $('input[type="submit"]');
+                var response = grecaptcha.getResponse();
+                if(response.length == 0) {
+                    alert("Please verify that you are not a robot.");
+                    return false;
+                } else {
+                    $submitButton.prop('disabled', true); // disable the F submit button
+                    $('#loading').show();
+                    $.ajax({
+                        url: "https://script.google.com/macros/s/AKfycbw0k6AukzSvS69qmiUOWLJfv9xw4qO07YU5grw-ukvMZxCKvSxdH_XwU66cqGZDx2c/exec",
+                        method: "POST",
+                        dataType: "json",
+                        data: $("form").serialize(),
+                        success: function() {
+                            $submitButton.prop('disabled', false); // re-enable the submit button
+                            $('#loading').hide();
+                            $("form")[0].reset();
+                            $('#myModal .modal-title').html('Success');
+                            $('#myModal .modal-body').html('Your feedback has been submitted.');
+                            $('#myModal').modal('show');
+                        },
+                        error: function() {
+                            $submitButton.prop('disabled', false); // re-enable the submit button
+                            $('#loading').hide();
+                            $('#myModal .modal-title').html('Error');
+                            $('#myModal .modal-body').html('There was a problem submitting your feedback.');
+                            $('#myModal').modal('show');
+                        }
+                    });
+                }
+            });
+        });
+</script>
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function onSubmit(token) {
+document.getElementById("feedback-form").submit();
+}
+</script>
 
 <body>
 	<form action="https://script.google.com/macros/s/AKfycbw0k6AukzSvS69qmiUOWLJfv9xw4qO07YU5grw-ukvMZxCKvSxdH_XwU66cqGZDx2c/exec" method="POST" id="feedback-form">
@@ -230,6 +233,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"></h4>
 				</div>
 				<div class="modal-body">
 				</div>
@@ -244,6 +248,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer">
