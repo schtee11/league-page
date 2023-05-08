@@ -160,19 +160,19 @@
             dataType: "json",
             data: $("form").serialize(),
             success: function() {
-              $submitButton.prop('disabled', false); // re-enable the submit button
-              $('#loading').hide();
-              $("form")[0].reset();
-              $('#myModal .modal-title').html('Success');
-              $('#myModal .modal-body').html('Your feedback has been submitted.');
-              $('#myModal').modal('show');
+                $submitButton.prop('disabled', false);
+                $('#loading').hide();
+                $('#feedback-form')[0].reset(); // reset the form
+                $('#myModal .modal-title').html('Success');
+                $('#myModal .modal-body').html('Your feedback has been submitted.');
+                $('#myModal').modal('show'); // show the success modal
             },
             error: function() {
-              $submitButton.prop('disabled', false); // re-enable the submit button
-              $('#loading').hide();
-              $('#myModal .modal-title').html('Error');
-              $('#myModal .modal-body').html('There was a problem submitting your feedback.');
-              $('#myModal').modal('show');
+                $submitButton.prop('disabled', false);
+                $('#loading').hide();
+                $('#myModal .modal-title').html('Error');
+                $('#myModal .modal-body').html('There was a problem submitting your feedback.');
+                $('#myModal').modal('show'); // show the error modal
             }
           });
         }
