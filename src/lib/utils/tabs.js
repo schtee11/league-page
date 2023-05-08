@@ -17,6 +17,11 @@ export const tabs = [
         dest: '/transactions',
     },
     {
+        icon: 'swap_horiz',
+        label: 'Feedback From',
+        dest: '/feedback',
+    },
+    {
         icon: 'article',
         label: 'Blog',
         dest: '/blog',
