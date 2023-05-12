@@ -3,6 +3,7 @@
 <style>
     /* Global Styles */
     body {
+    padding-top: 30px;
     background-color: #4d4dff !important;
     }
 
