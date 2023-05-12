@@ -1,143 +1,125 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-    /* Global Styles */
-    body {
-    padding-top: 30px;
-    background-color: #4d4dff !important;
+  /* Global Styles */
+  body {
+      padding-top: 30px;
+      background-color: #4d4dff !important;
+      overflow-x: hidden;
+  }
+
+  h2 {
+      background-color: #4d4dff;
+      text-align: left;
+      font-family: "Lato", sans-serif;
+      padding-bottom: 20px;
+      padding-top: 0;
+      color: #44d62c !important;
+      font-weight: bold !important;
+      font-size: 150% !important;
+  }
+
+  form {
+        margin: 0 auto;
+        padding: 50px;
+        background-color: #4d4dff;
+        border-radius: 12px;
+        border: 2.5px solid #c724b1;
+        padding-top: 10px;
+        box-sizing: border-box; /* Include padding and border in the width calculation */
+        max-width: 600px; /* Adjust the width of the form as needed */
+        width: 150%; /* Add this line to widen the form */
+        margin-top: 20px; /* Add this line to add spacing between the form and other elements */
     }
 
-    body {
-    overflow-x: hidden;
-    }
-
-    h2 {
-    background-color: #4d4dff;
-    text-align: left;
-    font-family: "Lato", sans-serif;
-    padding-bottom: 20px;
-    padding-top: 0px;
-    color:#44d62c !important;
-    font-weight: bold !important;
-    font-size:150% !important;
-    }
-
-    form {
-    width: 85%;
-    margin: 0 auto;
-    padding: 50px;
-    background-color: #4d4dff;
-    border-radius: 12px;
-    border: 2.5px solid #c724b1;
-    padding-top: 10px;
-    }
-
-    input[type="email"],
-    input[type="text"],
-    textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1.5px solid #ddd;
-    border-radius: 4px;
-    box-sizing:border-box;
-    }
-
-    input[type="email"]:focus,
-    input[type="text"]:focus,
-    textarea:focus {
-    border: 2px solid #c724b1;
-    }
-
-    label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-    color:#44d62c;
-    margin-top: 10px;
-    }
-
-    select {
-    width: 100%;
-    padding: 12px 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    }
-
-    input[type="submit"] {
-    display: block;
-    margin: 0 auto;
-    background-color: #44d62c;
-    color: #fff;
-    padding: 12px 50px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    }
-
-    input[type="submit"]:hover {
-    background-color: #36AB23;
-    }
-
-    .modal-header {
-    background-color: #c724b1;
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 12px;
-    }
-
-    .modal-footer {
-    background-color: #f5f5f5;
-    border-radius: 12px;
-    }
-
-    .modal-footer .btn-default {
-    background-color: #c724b1;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    }        
-
-    .modal-footer .btn-default:hover {
-    background-color: #722b86;
-    }
-
-    #loading {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 9999;
-    }
-
-    /* Responsive Styles */
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
         form {
-            width: 100%;
             padding: 20px;
         }
     }
 
-    .g-recaptcha{
-        padding: 20px;
+  input[type="email"],
+  input[type="text"],
+  textarea,
+  select {
+      width: 100%;
+      padding: 12px;
+      border: 1.5px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+  input[type="email"]:focus,
+  input[type="text"]:focus,
+  textarea:focus {
+      border: 2px solid #c724b1;
+  }
+
+  label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+      color: #44d62c;
+      margin-top: 10px;
+  }
+
+  input[type="submit"] {
+      display: block;
+      margin: 0 auto;
+      background-color: #44d62c;
+      color: #fff;
+      padding: 12px 50px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+  }
+
+  input[type="submit"]:hover {
+      background-color: #36AB23;
+  }
+
+  .modal-header {
+      background-color: #c724b1;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 12px;
+  }
+
+  .modal-footer {
+      background-color: #f5f5f5;
+      border-radius: 12px;
+  }
+
+  .modal-footer .btn-default {
+      background-color: #c724b1;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+  }
+
+  .modal-footer .btn-default:hover {
+      background-color: #722b86;
+  }
+
+  #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+  }
+
+  .g-recaptcha{
+        padding-top: 20px;
+        padding-bottom: 10px;
         width: fit-content;
         margin: 0 auto;
     }
-
-    /* apply only to devices with a max width of 768px, which includes most mobile devices */
-    @media screen and (max-width: 768px) {
-    .g-recaptcha {
-        width: 90%; /* adjust to your preference */
-        max-width: 320px; /* adjust to your preference */
-    }
-    }
-
 </style>
+
+
 
 <svelte:head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
